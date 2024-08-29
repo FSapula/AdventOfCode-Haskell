@@ -67,7 +67,7 @@ powerMinimalGame game = minimumBlueInGame game * minimumRedInGame game * minimum
 
 solutionFuncGames :: IO ()
 solutionFuncGames = do
-  let filename = "/Users/filip/haskell/advent/advent/src/Ex2/input.txt"
+  let filename = "./src/Ex2/input.txt"
   filecontent <- readFile filename
   let linelist = lines filecontent
   let games = map (parseLine) linelist

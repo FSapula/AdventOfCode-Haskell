@@ -24,12 +24,18 @@ getHandType hand
   | 2 `elem` pairs = 1
   | otherwise = 0
  where
-  pairs = map (length) $ group $ sort $ cards hand
+  pairs = addJokersToPairs jokernum $ sort $ map (length) $ group $ sort $ filter (/= 'J') $ cards hand
+  jokernum = length $ filter (== 'J') $ cards hand
 
 getCardSeniority :: Hand -> Int
-getCardSeniority hand = fst $ head $ filter (\t -> snd t == card) $ zip [0 .. 12] "23456789TJQKA"
+getCardSeniority hand = fst $ head $ filter (\t -> snd t == card) $ zip [0 .. 12] "J23456789TQKA"
  where
   card = head $ cards hand
+
+addJokersToPairs :: Int -> [Int] -> [Int]
+addJokersToPairs jokernum pairs
+  | jokernum == 5 = [5]
+  | otherwise = (head pairs + jokernum) : tail pairs
 
 -- a >= b
 compareCardSeniority :: Hand -> Hand -> Bool
@@ -44,4 +50,5 @@ solutionFunc = do
   filecontent <- readFile filename
   let filelines = lines filecontent
   let hands = map (getHand) filelines
+  print $ sort hands
   print $ sum $ map (\(i, c) -> i * bid c) $ zip [1 ..] $ sort hands

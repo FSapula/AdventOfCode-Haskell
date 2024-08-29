@@ -65,7 +65,7 @@ isPartValid symbolslist part = (length $ getAdjecentSymbols symbolslist part) /=
 
 solutionFuncEngine :: IO ()
 solutionFuncEngine = do
-  let filename = "/Users/filip/haskell/advent/advent/src/Ex3/input.txt"
+  let filename = "./src/Ex3/input.txt"
   filecontent <- readFile filename
   let filelines = lines filecontent
   let partslist = concat $ map (\(i, l) -> parseLine i l) (zip [0 ..] filelines)

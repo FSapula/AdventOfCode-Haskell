@@ -45,7 +45,7 @@ solutionFunc = do
 
 solutionFuncsnd :: IO ()
 solutionFuncsnd = do
-  let filename = "/Users/filip/haskell/advent/advent/src/Ex1/input.txt"
+  let filename = "./src/Ex1/input.txt"
   filecontent <- readFile filename
   let linelist = lines filecontent
   print $ linelist
