@@ -33,6 +33,7 @@ library
       Ex6.Solution
       Ex7.Solution
       Ex8.Solution
+      Ex9.Solution
       Lib
   other-modules:
       Paths_advent
