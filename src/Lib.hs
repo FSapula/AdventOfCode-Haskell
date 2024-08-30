@@ -2,7 +2,7 @@ module Lib (
   someFunc,
 ) where
 
-import Ex7.Solution (solutionFunc)
+import Ex8.Solution (solutionFunc)
 
 someFunc :: IO ()
 someFunc = solutionFunc

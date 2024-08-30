@@ -32,6 +32,7 @@ library
       Ex5.Solution
       Ex6.Solution
       Ex7.Solution
+      Ex8.Solution
       Lib
   other-modules:
       Paths_advent
