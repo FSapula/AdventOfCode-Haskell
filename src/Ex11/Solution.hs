@@ -37,7 +37,7 @@ isRowEmpty rw = all (\p -> typeP p == E) rw
 expandRows :: Int -> [Space] -> [Space]
 expandRows _ [] = []
 expandRows ofset (x : xs)
-  | isRowEmpty x = (map (\s -> s{row = (row s + ofset)}) x) : (emptyRow (row (head x) + 1 + ofset) (length x)) : expandRows (ofset + 1) xs
+  | isRowEmpty x = (map (\s -> s{row = (row s + ofset)}) x) : (emptyRow (row (head x) + 999999 + ofset) (length x)) : expandRows (ofset + 999999) xs
   | otherwise = map (\s -> s{row = (row s + ofset)}) x : expandRows ofset xs
 
 isSameColumn :: Place -> Place -> Bool
@@ -51,8 +51,8 @@ expandRowWithColumn _ _ [] = []
 expandRowWithColumn offset emptyColList (x : xs)
   | col x `elem` emptyColList =
       x{col = (col x) + offset}
-        : Place (row x) (col x + offset + 1) E
-        : expandRowWithColumn (offset + 1) emptyColList xs
+        : Place (row x) (col x + offset + 999999) E
+        : expandRowWithColumn (offset + 999999) emptyColList xs
   | otherwise = x{col = (col x) + offset} : expandRowWithColumn offset emptyColList xs
 
 expandColums :: [Int] -> [Space] -> [Space]
@@ -75,5 +75,7 @@ solutionFunc = do
   let cspace = concat expandedspace
   let galaxylist = filter (\p -> typeP p == G) cspace
   let pairs = getPairsList galaxylist
+  print $ getEmptyColumns space
   print $ map (col) $ expandedspace !! 0
+  print $ galaxylist
   print $ sum $ map (getDistance) pairs
