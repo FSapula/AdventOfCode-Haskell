@@ -27,6 +27,7 @@ library
   exposed-modules:
       Ex1.Solution
       Ex10.Solution
+      Ex11.Solution
       Ex2.Solution
       Ex3.Solution
       Ex4.Solution
